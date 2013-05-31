@@ -9,7 +9,7 @@ class Pet
   end
     
   def to_s
-    "#{@pet_name} is a #{@gender} #{@type} who loves their toy #{@fav_toy} and #{@is_avail} up for adoption"
+    "#{@pet_name} is a #{@gender} #{@type} who loves their toy #{@fav_toy}."
   end
 end
   

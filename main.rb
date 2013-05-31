@@ -3,16 +3,16 @@ require 'pry'
 require_relative "shelter"
 require_relative "pet"
 require_relative "client"
-
-p1 = Pet.new("Lassie", "female", "ball", "dog", "true")
-p2 = Pet.new("Bonnie", "Female", "rock", "lizard", "true")
-p3 = Pet.new("Todo", "Male", "ball", "cat", "false")
-p4 = Pet.new("Leila", "Female", "mouse", "dog", "true")
-p5 = Pet.new("Blue", "Male", "mouse", "dog", "true")
-p6 = Pet.new("Bambi", "Female", "none", "dog", "false")
-p7 = Pet.new("Buster", "Male", "stuffed taco", "cat", "false")
-p8 = Pet.new("Bobo", "Male", "stuffed taco", "cat", "false")
-p9 = Pet.new("Buggy", "Female", "rock", "lizard", "false")
+#ER: Took is_avail out of quotes
+p1 = Pet.new("Lassie", "female", "ball", "dog", true)
+p2 = Pet.new("Bonnie", "Female", "rock", "lizard", true)
+p3 = Pet.new("Todo", "Male", "ball", "cat", false)
+p4 = Pet.new("Leila", "Female", "mouse", "dog", true)
+p5 = Pet.new("Blue", "Male", "mouse", "dog", true)
+p6 = Pet.new("Bambi", "Female", "none", "dog", false)
+p7 = Pet.new("Buster", "Male", "stuffed taco", "cat", false)
+p8 = Pet.new("Bobo", "Male", "stuffed taco", "cat", false)
+p9 = Pet.new("Buggy", "Female", "rock", "lizard", false)
 
 s1 = Shelter.new
 
@@ -33,12 +33,20 @@ while response != "q"
     print "What is your address: "
     address = gets.chomp.capitalize
 
-    print "Hi, #{client_name}, here are our available pets:" 
+    print "Hi, #{client_name}, here are our available pets: " 
     
-    s1(a1).each do |pet|
-     if pet.is_avail puts pet
+    a1.each do |pet|  #ER: This ended up being right how you had it
+     if pet.is_avail == true #ER: it keps giving me a ruby error so I tried this on a whim
+      puts pet
+     else
+      next #this allowed it to skip over the non avails
+      end
     end
-  end
+
+    print "Which pet would you like to adopt?"
+    pet_name = gets.chomp.capitalize
+    puts "Excellent choice. #{pet_name} will love his new home! "
+    #do we need to do anything else here or aw we good?
 
   else response == "s"
     print "What is your name: "
@@ -56,7 +64,7 @@ while response != "q"
     print "Whar is your pet's favorite toy: "
     fav_toy = gets.chomp.downcase
 
-    print "Please write us a check for $150."
+    puts "We will find a nice home for #{pet_name}. Thanks. "
     
   end
   print "Would you like to (a)dopt, (s)urrender a pet, or (q)uit?"
@@ -68,42 +76,3 @@ end
 
 
 binding.pry
-# building = nil
-# 
-# 
-# print "add (p)erson or (a)partment or (b)uilding or (q)uit:"
-# response = gets.chomp.downcase
-# 
-# 
-# while response != "q"
-#  
-#   
-#   if response == "b"
-#     building = Building.new("123 King Street", "modern", "false", "false", 10)
-#     puts "Building created"
-#     
-#   elsif response == "a"
-#     print "Unit no:"
-#     unit_no = gets.chomp
-#     print "Sq Ft.:"
-#     sqft = gets.to_i
-#     building.apartments[unit_no] = Apartment.new(unit_no, sqft, 1, 1) 
-#     
-#   elsif response == "p"
-#     print "Age:"
-#     age = gets.to_i
-#     print "Name:"
-#     name = gets.chomp
-#     print "gender"
-#     gender = gets.chomp
-#     print "Which apartment do you live in?"
-#     apt = gets.chomp
-#     building.apartments[apt].renters << Person.new(name, age, gender)
-#  
-#   end
-#   print "add (p)erson or (a)partment or (b)uilding or (q)uit:"
-#   response = gets.chomp.downcase
-# end
-
-
-

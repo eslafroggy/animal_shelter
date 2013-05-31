@@ -5,6 +5,6 @@ class Shelter
     @clients = {}
   end
   def to_s
-  puts "The shelter has #{@pets.count}"
+  puts "The shelter has #{@pets.count} pets."
   end    
 end 
