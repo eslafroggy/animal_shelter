@@ -1,9 +1,7 @@
 class Client
-  attr_accessor :client_name, :num_pets
-  def initialize(client_name, has_pet)
+  attr_accessor :client_name, :address
+  def initialize(client_name, address)
     @client_name = client_name
-    @has_pet = has_pet
+    @address = address
   end
 end
-    
-    
