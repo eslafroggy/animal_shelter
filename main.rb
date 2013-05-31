@@ -4,15 +4,15 @@ require_relative "shelter"
 require_relative "pet"
 require_relative "client"
 
-p1 = Pet.new("Lassie", "female", "ball", "dog", "is")
-p2 = Pet.new("Bonnie", "Female", "rock", "lizard", "is")
-p3 = Pet.new("Todo", "Male", "ball", "cat", "is not")
-p4 = Pet.new("Leila", "Female", "mouse", "dog", "is")
-p5 = Pet.new("Blue", "Male", "mouse", "dog", "is")
-p6 = Pet.new("Bambi", "Female", "none", "dog", "is not")
-p7 = Pet.new("Buster", "Male", "stuffed taco", "cat", "is not")
-p8 = Pet.new("Bobo", "Male", "stuffed taco", "cat", "is not")
-p9 = Pet.new("Buggy", "Female", "rock", "lizard", "is not")
+p1 = Pet.new("Lassie", "female", "ball", "dog", "true")
+p2 = Pet.new("Bonnie", "Female", "rock", "lizard", "true")
+p3 = Pet.new("Todo", "Male", "ball", "cat", "false")
+p4 = Pet.new("Leila", "Female", "mouse", "dog", "true")
+p5 = Pet.new("Blue", "Male", "mouse", "dog", "true")
+p6 = Pet.new("Bambi", "Female", "none", "dog", "false")
+p7 = Pet.new("Buster", "Male", "stuffed taco", "cat", "false")
+p8 = Pet.new("Bobo", "Male", "stuffed taco", "cat", "false")
+p9 = Pet.new("Buggy", "Female", "rock", "lizard", "false")
 
 s1 = Shelter.new
 
@@ -33,9 +33,14 @@ while response != "q"
     print "What is your address: "
     address = gets.chomp.capitalize
 
-    print "Hi, #{client_name}, here are our available pets: #{s1.pets.values}"
+    print "Hi, #{client_name}, here are our available pets:" 
+    
+    s1(a1).each do |pet|
+     if pet.is_avail puts pet
+    end
+  end
 
-  elsif response == "s"
+  else response == "s"
     print "What is your name: "
     client_name = gets.chomp.capitalize
 
@@ -57,6 +62,7 @@ while response != "q"
   print "Would you like to (a)dopt, (s)urrender a pet, or (q)uit?"
   response = gets.chomp.downcase
   
+
 end
 
 
