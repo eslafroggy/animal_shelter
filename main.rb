@@ -3,7 +3,7 @@ require 'pry'
 require_relative "shelter"
 require_relative "pet"
 require_relative "client"
-#ER: Took is_avail out of quotes
+
 p1 = Pet.new("Lassie", "female", "ball", "dog", true)
 p2 = Pet.new("Bonnie", "Female", "rock", "lizard", true)
 p3 = Pet.new("Todo", "Male", "ball", "cat", false)
@@ -35,18 +35,19 @@ while response != "q"
 
     print "Hi, #{client_name}, here are our available pets: " 
     
-    a1.each do |pet|  #ER: This ended up being right how you had it
-     if pet.is_avail == true #ER: it keps giving me a ruby error so I tried this on a whim
+    a1.each do |pet|  
+     if pet.is_avail == true 
       puts pet
      else
-      next #this allowed it to skip over the non avails
+      next 
       end
     end
 
     print "Which pet would you like to adopt?"
     pet_name = gets.chomp.capitalize
-    puts "Excellent choice. #{pet_name} will love his new home! "
+    puts "Excellent choice. #{pet_name.capitalize} will love their new home! "
     #do we need to do anything else here or aw we good?
+    #I just chenged "his" to "their" and called "capitalize" on pet_name. Nothing major
 
   else response == "s"
     print "What is your name: "
@@ -64,7 +65,7 @@ while response != "q"
     print "Whar is your pet's favorite toy: "
     fav_toy = gets.chomp.downcase
 
-    puts "We will find a nice home for #{pet_name}. Thanks. "
+    puts "We will find a nice home for #{pet_name.capitalize}. Thanks. "
     
   end
   print "Would you like to (a)dopt, (s)urrender a pet, or (q)uit?"
